@@ -1,0 +1,10 @@
+insert into heroes (name) values ('Dr Nice');
+insert into heroes (name) values ('Bombasto');
+insert into heroes (name) values ('Narco');
+insert into heroes (name) values ('Celeritas');
+insert into heroes (name) values ('Magneta');
+insert into heroes (name) values ('RubberMan');
+insert into heroes (name) values ('Dynama');
+insert into heroes (name) values ('Dr IQ');
+insert into heroes (name) values ('Magma');
+insert into heroes (name) values ('Tornado');
