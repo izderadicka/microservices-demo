@@ -8,7 +8,8 @@ default:
     paths:
       - .npm/
     key:
-      file: angular-tutorial-heroes/package-lock.json
+      files: 
+      - angular-tutorial-heroes/package-lock.json
 
 build-test:
   stage: test
