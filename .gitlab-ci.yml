@@ -3,3 +3,8 @@ microservices:
   trigger:
     include: backend-pipeline.yml
     strategy: depend
+
+client:
+  trigger:
+    include: frontend-pipeline.yml
+    strategy: depend
