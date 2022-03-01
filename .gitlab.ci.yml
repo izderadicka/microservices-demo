@@ -1,0 +1,4 @@
+
+microservices:
+  trigger:
+    include: backend-pipeline.yml
