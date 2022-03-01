@@ -2,3 +2,4 @@
 microservices:
   trigger:
     include: backend-pipeline.yml
+    strategy: depend
