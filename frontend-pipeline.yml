@@ -21,7 +21,7 @@ build-test:
   artifacts:
     expire_in: 1 day
     paths:
-      - dist/
+      - angular-tutorial-heroes/dist/
 
 
 deploy-image:
