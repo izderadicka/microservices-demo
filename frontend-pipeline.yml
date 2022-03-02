@@ -27,11 +27,14 @@ build-test:
 deploy-image:
   stage: deploy
   image: docker:stable
-  variables:
-    DOCKER_IMAGE: izderadicka/ms-demo-front-end
   services:
     - docker:stable-dind
+  variables:
+    DOCKER_IMAGE: izderadicka/ms-demo-front-end
+  dependencies:
+    - build-test
   script:
+    - cd angular-tutorial-heroes
     - docker build -t $DOCKER_IMAGE .
     # - echo $DOCKER_PWD | docker login -u $DOCKER_USER --password-stdin
     # - docker push $DOCKER_IMAGE
