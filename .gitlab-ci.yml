@@ -1,10 +1,27 @@
-
+stages:
+  - init
 microservices:
+  stage: init
   trigger:
     include: backend-pipeline.yml
     strategy: depend
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "schedule"'
+    - changes:
+      - color-service/**/*
+      - heroesdemo_server/**/*
+      - spoiler/**/*
+      - pom.xml
+      - backend-pipeline.yml
+    
 
 client:
+  stage: init
   trigger:
     include: frontend-pipeline.yml
     strategy: depend
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "schedule"'
+    - changes:
+      - /angular-tutorial-heroes/**/*
+      - frontend-pipeline.yml
