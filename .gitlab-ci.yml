@@ -6,7 +6,7 @@ microservices:
     include: backend-pipeline.yml
     strategy: depend
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "schedule"'
+    - if: &condition '$CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "schedule"'
     - changes:
       - color-service/**/*
       - heroesdemo_server/**/*
@@ -21,7 +21,18 @@ client:
     include: frontend-pipeline.yml
     strategy: depend
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "web" || $CI_PIPELINE_SOURCE == "schedule" || $CI_PIPELINE_SOURCE == "schedule"'
+    - if: *condition
     - changes:
       - /angular-tutorial-heroes/**/*
       - frontend-pipeline.yml
+
+dummy:
+  stage: init
+  tags:
+    - microservices
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - echo "Dummy job to start pipeline for any change"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "push"'
