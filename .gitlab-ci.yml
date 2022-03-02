@@ -23,7 +23,7 @@ client:
   rules:
     - if: *condition
     - changes:
-      - /angular-tutorial-heroes/**/*
+      - angular-tutorial-heroes/**/*
       - frontend-pipeline.yml
 
 dummy:
