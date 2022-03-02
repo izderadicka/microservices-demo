@@ -17,4 +17,5 @@ build-test:
   - cd angular-tutorial-heroes
   - npm ci --cache ../.npm --prefer-offline
   - npm run build
+  - npm run test
     
