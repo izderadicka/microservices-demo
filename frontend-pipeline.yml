@@ -23,9 +23,14 @@ build-test:
     paths:
       - angular-tutorial-heroes/dist/
 
-include: /deploy-image.yml
-deploy-image: *deploy-image-template
-  
+include: deploy-image.yml
+deploy-image: 
+  extends: .deploy-image
+  variables:
+    DOCKER_IMAGE: izderadicka/ms-demo-front-end
+    DOCKER_DIR: angular-tutorial-heroes
+  dependencies:
+    - build-test
   
 
     
