@@ -1,6 +1,3 @@
-include:
-  - local: deploy-image.yml
-
 default:
   image: izderadicka/nodechrome
   tags: 
@@ -26,13 +23,9 @@ build-test:
     paths:
       - angular-tutorial-heroes/dist/
 
-
-deploy-image:
-  variables:
-    DOCKER_IMAGE: izderadicka/ms-demo-front-end
-    DOCKER_DIR: angular-tutorial-heroes
-  dependencies:
-    - build-test
+include: /deploy-image.yml
+deploy-image: *deploy-image-template
+  
   
 
     

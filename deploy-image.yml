@@ -1,4 +1,4 @@
-deploy-image:
+.deploy-image: &deploy-image-template
   stage: deploy
   image: mgoltzsche/podman
   variables:
