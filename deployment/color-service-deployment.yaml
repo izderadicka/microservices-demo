@@ -1,38 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f ../docker-compose.yml
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
   labels:
-    io.kompose.service: color-service
+    app-service: color-service
   name: color-service
 spec:
   replicas: 2
   selector:
     matchLabels:
-      io.kompose.service: color-service
+      app-service: color-service
   strategy: {}
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f ../docker-compose.yml
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.network/postgres: "true"
-        io.kompose.service: color-service
+        app-service: color-service
     spec:
       containers:
         - env:
-            - name: spring_profiles_active
-              value: docker
             - name: SPOILER_TYPE
               value: NONE
             - name: SPOILER_MTTF
               value: "1000"
-          image: color-service
+          image: docker.io/izderadicka/color-service:latest
           imagePullPolicy: IfNotPresent
           name: color-service
           ports:
@@ -45,4 +34,3 @@ spec:
             periodSeconds: 3
           resources: {}
       restartPolicy: Always
-status: {}

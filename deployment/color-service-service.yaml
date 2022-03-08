@@ -1,12 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f ../docker-compose.yml
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
   labels:
-    io.kompose.service: color-service
+    app-service: color-service
   name: color-service
 spec:
   ports:
@@ -15,6 +11,4 @@ spec:
       targetPort: 8081
   type: NodePort
   selector:
-    io.kompose.service: color-service
-status:
-  loadBalancer: {}
+    app-service: color-service
